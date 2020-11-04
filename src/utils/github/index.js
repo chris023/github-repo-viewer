@@ -9,9 +9,8 @@ const searchGithubRepos = (query) => {
 
   let url = `${config.baseurl}?q=${query}`
 
-  return fetch({
+  return fetch(url, {
     method: 'GET',
-    url,
   })
 }
 
