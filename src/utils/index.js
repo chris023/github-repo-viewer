@@ -1,2 +1,3 @@
-export * from './web-vitals'
+export * from './github'
 export * from './material-ui'
+export * from './web-vitals'
