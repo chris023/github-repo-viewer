@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { Typography } from '@material-ui/core'
+
 import { SearchInput, SearchResults } from '../../Components'
 import { useStyles } from './style'
 
@@ -15,6 +17,7 @@ const Search = () => {
 
   return (
     <div className={classes.root}>
+      <Typography variant="h5">Useless But Sick Repo Searcher</Typography>
       <SearchInput setResults={setResults} />
       <SearchResults results={results} />
     </div>
