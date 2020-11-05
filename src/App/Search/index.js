@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { SearchInput } from '../../Components'
+import { SearchInput, SearchResults } from '../../Components'
 import { useStyles } from './style'
 
 const Search = () => {
@@ -16,6 +16,7 @@ const Search = () => {
   return (
     <div className={classes.root}>
       <SearchInput setResults={setResults} />
+      <SearchResults results={results} />
     </div>
   )
 }
