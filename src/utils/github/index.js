@@ -3,15 +3,13 @@ const config = {
 }
 
 const searchGithubRepos = (query, language) => {
-  console.log('here', language)
-
   if (!query?.length) {
     throw new Error('Query string required')
   }
 
   let url = `${config.baseurl}?q=${query}`
 
-  if (language?.length) {
+  if (language?.length && language !== 'All') {
     url += '+language:' + language.toLowerCase()
   }
 
