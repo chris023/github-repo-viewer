@@ -17,7 +17,9 @@ const Search = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h5">Useless But Sick Repo Searcher</Typography>
+      <Typography variant="h5" align="center">
+        Useless But Sick Repo Searcher
+      </Typography>
       <SearchInput setResults={setResults} />
       <SearchResults results={results} />
     </div>
