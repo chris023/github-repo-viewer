@@ -40,7 +40,7 @@ const sortMethods = [
         Stars <ArrowIcon style={{ transform: 'rotate(90deg)' }} />
       </div>
     ),
-    value: '&sort=stars&order=asc',
+    value: '&sort=stars&order=desc',
   },
   {
     display: (
@@ -48,7 +48,7 @@ const sortMethods = [
         Stars <ArrowIcon style={{ transform: 'rotate(270deg)' }} />
       </div>
     ),
-    value: '&sort=stars&order=desc',
+    value: '&sort=stars&order=asc',
   },
 ]
 
