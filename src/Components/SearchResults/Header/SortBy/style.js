@@ -4,7 +4,6 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
-    marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
   },
   checkIcon: {

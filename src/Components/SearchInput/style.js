@@ -8,6 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     maxWidth: 600,
     marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     width: '100%',
   },
   input: {
