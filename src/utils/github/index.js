@@ -6,7 +6,7 @@ const config = {
   baseurl: 'https://api.github.com/search/repositories',
 }
 
-const searchGithubRepos = ({ query, language, sort }) => {
+const searchGithubRepos = ({ query, language, page, pageSize, sort }) => {
   if (!query?.length) {
     throw new Error('Query string required')
   }
@@ -17,9 +17,12 @@ const searchGithubRepos = ({ query, language, sort }) => {
     url += '+language:' + language.toLowerCase()
   }
 
-  if (sort?.value?.length) {
+  if (sort?.value?.length && sort !== 'best-match') {
     url += sort.value
   }
+
+  if (page) url += `&page=${page}`
+  if (pageSize) url += `&per_page=${pageSize}`
 
   return fetch(url, {
     method: 'GET',
