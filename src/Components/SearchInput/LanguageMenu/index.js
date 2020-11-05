@@ -47,7 +47,7 @@ const LanguageMenu = ({ useQuery }) => {
   const [query, setQuery] = useQuery
 
   const select = (language) => () => {
-    setQuery((prev) => ({ ...prev, language }))
+    setQuery((prev) => ({ ...prev, language, page: 1 }))
     setOpen(null)
   }
 
