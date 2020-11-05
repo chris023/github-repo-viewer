@@ -31,7 +31,7 @@ const Footer = ({ useQuery }) => {
         <ArrowBackIcon />
       </Paper>
 
-      <Paper elevation={4} className={classes.button}>
+      <Paper variant="outlined" className={classes.button}>
         Page: {query.page}
       </Paper>
 

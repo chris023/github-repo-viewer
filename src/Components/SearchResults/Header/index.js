@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Paper, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 
 import { useStyles } from './style'
 import { ResultsPerPage } from './ResultsPerPage'
@@ -8,6 +8,7 @@ import { SortBy } from './SortBy'
 
 const Header = ({ data, useQuery }) => {
   const classes = useStyles()
+
   const [query] = useQuery
 
   const totalResults = (() => {
@@ -17,17 +18,15 @@ const Header = ({ data, useQuery }) => {
   })()
 
   return (
-    <div>
-      <Typography className={classes.title} align="center">
-        {data?.items?.length
-          ? `Displaying ${data?.items?.length} of ${totalResults} Results`
-          : `No Results`}
-      </Typography>
-      <div className={classes.subheader}>
-        <ResultsPerPage useQuery={useQuery} />
-        <Paper className={classes.button}>Page: {query.page}</Paper>
-        <SortBy useQuery={useQuery} />
+    <div className={classes.root}>
+      <ResultsPerPage useQuery={useQuery} />
+      <div className={classes.summaryContainer}>
+        <Typography className={classes.searchTermText}>
+          Search for &quot;{query.query}&quot;
+        </Typography>
+        <Typography variant="caption">{`${totalResults} Results`}</Typography>
       </div>
+      <SortBy useQuery={useQuery} />
     </div>
   )
 }
