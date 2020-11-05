@@ -10,13 +10,11 @@ import { reportWebVitals, theme } from './utils'
 import './index.css'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </Router>,
   document.getElementById('root'),
 )
 
