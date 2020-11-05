@@ -5,7 +5,7 @@ import { useTheme } from '@material-ui/core'
 
 import { useStyles } from './style'
 
-const GenericLoader = ({ debounceTime = 1500 }) => {
+const GenericLoader = ({ debounceTime = 500 }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [delay, setDelay] = useState(true)
