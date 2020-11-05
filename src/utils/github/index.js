@@ -11,6 +11,9 @@ const searchGithubRepos = (query) => {
 
   return fetch(url, {
     method: 'GET',
+    headers: {
+      accept: 'application/vnd.github.v3+json',
+    },
   })
 }
 
