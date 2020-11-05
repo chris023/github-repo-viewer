@@ -22,7 +22,7 @@ const Header = ({ data, useQuery }) => {
       <ResultsPerPage useQuery={useQuery} />
       <div className={classes.summaryContainer}>
         <Typography className={classes.searchTermText}>
-          Search for &quot;{query.query}&quot;
+          Search for &quot;{query.search}&quot;
         </Typography>
         <Typography variant="caption">{`${totalResults} Results`}</Typography>
       </div>

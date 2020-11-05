@@ -9,7 +9,7 @@ import { useStyles } from './style'
 const Search = () => {
   const classes = useStyles()
   const [query, setQuery] = useState({
-    query: '',
+    search: '',
     language: 'All',
     page: 1,
     pageSize: 10,
@@ -22,7 +22,7 @@ const Search = () => {
   })
 
   const search = (query) => {
-    if (query?.query?.length) {
+    if (query?.search?.length) {
       setResults((prev) => ({ ...prev, loading: true }))
 
       searchGithubRepos(query)
