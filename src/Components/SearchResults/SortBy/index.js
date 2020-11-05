@@ -9,13 +9,13 @@ import clsx from 'clsx'
 import { sortMethods } from '../../../utils'
 import { useStyles } from './style'
 
-const SortBy = () => {
+const SortBy = ({ useQuery }) => {
   const classes = useStyles()
-  const [sortMethod, setSortMethod] = useState(sortMethods[0])
   const [open, setOpen] = useState(null)
+  const [query, setQuery] = useQuery
 
   const select = (method) => () => {
-    setSortMethod(method)
+    setQuery((prev) => ({ ...prev, sort: method }))
     setOpen(null)
   }
 
@@ -28,7 +28,7 @@ const SortBy = () => {
         component={Paper}
       >
         <ListItem button className={classes.listItem}>
-          {sortMethod.display} <ArrowDownIcon />
+          {query.sort.display} <ArrowDownIcon />
         </ListItem>
       </List>
       <Menu
@@ -38,7 +38,7 @@ const SortBy = () => {
         classes={{ list: classes.menu }}
       >
         {sortMethods.map((method, i) => {
-          const selected = sortMethod.value === method.value
+          const selected = query.sort.value === method.value
           return (
             <MenuItem
               onClick={select(method)}
