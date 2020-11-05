@@ -13,13 +13,15 @@ const SearchInput = ({ setResults }) => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    setResults((prev) => ({ ...prev, loading: true }))
+    if (query?.length) {
+      setResults((prev) => ({ ...prev, loading: true }))
 
-    searchGithubRepos(query)
-      .then((response) => response.json())
-      .then((data) => setResults((prev) => ({ ...prev, data })))
-      .catch((error) => setResults((prev) => ({ ...prev, error })))
-      .finally(() => setResults((prev) => ({ ...prev, loading: false })))
+      searchGithubRepos(query)
+        .then((response) => response.json())
+        .then((data) => setResults((prev) => ({ ...prev, data })))
+        .catch((error) => setResults((prev) => ({ ...prev, error })))
+        .finally(() => setResults((prev) => ({ ...prev, loading: false })))
+    }
   }
 
   return (
