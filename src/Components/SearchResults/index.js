@@ -4,8 +4,9 @@ import { List, Paper, Typography } from '@material-ui/core'
 
 import { GenericLoader } from '../../Components'
 
+import { Footer } from './Footer'
+import { Header } from './Header'
 import { Result } from './Result'
-import { SortBy } from './SortBy'
 import { useStyles } from './style'
 
 const Error = ({ error }) => <Typography>{error}</Typography>
@@ -25,30 +26,23 @@ const SearchResults = ({ results, useQuery }) => {
   if (error) return <Error error={error} />
 
   if (data) {
-    const totalResults = (() => {
-      if (Number(data?.total_count) > 1000)
-        return (data?.total_count / 1000).toFixed(0) + 'K'
-      return data?.total_count
-    })()
-
     return (
-      <div className={classes.root}>
-        <Typography className={classes.title} align="center">
-          {data?.items?.length
-            ? `Displaying ${data?.items?.length} of ${totalResults} Results`
-            : `No Results`}
-        </Typography>
-        <SortBy useQuery={useQuery} />
-        {data?.items?.length ? (
-          <Paper>
-            <List dense className={classes.list}>
-              {data?.items?.map((item, i) => (
-                <Result item={item} key={`item-${i}`} />
-              ))}
-            </List>
-          </Paper>
-        ) : null}
-      </div>
+      <>
+        <div className={classes.root}>
+          <Header data={data} useQuery={useQuery} />
+
+          {data?.items?.length ? (
+            <Paper>
+              <List dense disablePadding className={classes.list}>
+                {data?.items?.map((item, i) => (
+                  <Result item={item} key={`item-${i}`} />
+                ))}
+              </List>
+            </Paper>
+          ) : null}
+        </div>
+        <Footer useQuery={useQuery} />
+      </>
     )
   }
 
