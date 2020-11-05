@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { Typography } from '@material-ui/core'
 
 import { SearchInput, SearchResults } from '../../Components'
-import { searchGithubRepos } from '../../utils'
+import { searchGithubRepos, sortMethods } from '../../utils'
 import { useStyles } from './style'
 
 const Search = () => {
   const classes = useStyles()
-  const [query, setQuery] = useState({ query: '', language: 'All', sort: '' })
+  const [query, setQuery] = useState({
+    query: '',
+    language: 'All',
+    sort: sortMethods[0],
+  })
   const [results, setResults] = useState({
     loading: false,
     error: false,
@@ -35,7 +39,7 @@ const Search = () => {
         Useless But Sick Repo Searcher
       </Typography>
       <SearchInput useQuery={[query, setQuery]} />
-      <SearchResults results={results} />
+      <SearchResults useQuery={[query, setQuery]} results={results} />
     </div>
   )
 }
