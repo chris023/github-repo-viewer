@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core'
 export const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
+    boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
     maxWidth: 600,
