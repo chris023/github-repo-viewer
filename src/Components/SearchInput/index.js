@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Divider, InputBase, IconButton, Paper } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
@@ -12,18 +12,23 @@ const SearchInput = ({ setResults }) => {
   const [query, setQuery] = useState('')
   const [language, setLanguage] = useState('All')
 
+  const search = (...props) =>
+    searchGithubRepos(...props)
+      .then((response) => response.json())
+      .then((data) => setResults((prev) => ({ ...prev, data })))
+      .catch((error) => setResults((prev) => ({ ...prev, error })))
+      .finally(() => setResults((prev) => ({ ...prev, loading: false })))
+
+  useEffect(() => query?.length && search(query, language), [language])
+
   const onSubmit = (e) => {
     e.preventDefault()
 
     if (query?.length) {
       setResults((prev) => ({ ...prev, loading: true }))
-
-      searchGithubRepos(query, language)
-        .then((response) => response.json())
-        .then((data) => setResults((prev) => ({ ...prev, data })))
-        .catch((error) => setResults((prev) => ({ ...prev, error })))
-        .finally(() => setResults((prev) => ({ ...prev, loading: false })))
     }
+
+    search(query, language)
   }
 
   return (
