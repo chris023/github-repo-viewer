@@ -17,7 +17,7 @@ const SearchInput = ({ setResults }) => {
 
     searchGithubRepos(query)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => setResults((prev) => ({ ...prev, data })))
       .catch((error) => setResults((prev) => ({ ...prev, error })))
       .finally(() => setResults((prev) => ({ ...prev, loading: false })))
   }
