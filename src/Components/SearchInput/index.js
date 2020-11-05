@@ -15,7 +15,7 @@ const SearchInput = ({ useQuery }) => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    setQuery((prev) => ({ ...prev, query: inputValue }))
+    setQuery((prev) => ({ ...prev, query: inputValue, page: 1 }))
   }
 
   return (
