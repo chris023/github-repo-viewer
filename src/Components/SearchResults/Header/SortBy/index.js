@@ -6,7 +6,7 @@ import ArrowDownIcon from '@material-ui/icons/ExpandMore'
 
 import clsx from 'clsx'
 
-import { sortMethods } from '../../../utils'
+import { sortMethods } from '../../../../utils'
 import { useStyles } from './style'
 
 const SortBy = ({ useQuery }) => {
