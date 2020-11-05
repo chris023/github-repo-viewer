@@ -41,12 +41,13 @@ const languages = [
   'Haskell',
 ]
 
-const LanguageMenu = ({ language, setLanguage }) => {
+const LanguageMenu = ({ useQuery }) => {
   const [open, setOpen] = useState(null)
   const classes = useStyles()
+  const [query, setQuery] = useQuery
 
   const select = (language) => () => {
-    setLanguage(language)
+    setQuery((prev) => ({ ...prev, language }))
     setOpen(null)
   }
 
@@ -58,7 +59,7 @@ const LanguageMenu = ({ language, setLanguage }) => {
         onClick={(e) => setOpen(e.currentTarget)}
       >
         <ListItem button>
-          <ListItemText>{language}</ListItemText>
+          <ListItemText>{query.language}</ListItemText>
           <ListItemIcon className={classes.listItemIcon}>
             <ArrowDownIcon />
           </ListItemIcon>

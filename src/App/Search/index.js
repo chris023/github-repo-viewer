@@ -1,26 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Typography } from '@material-ui/core'
 
 import { SearchInput, SearchResults } from '../../Components'
+import { searchGithubRepos } from '../../utils'
 import { useStyles } from './style'
 
 const Search = () => {
   const classes = useStyles()
-
-  // eslint-disable-next-line no-unused-vars
+  const [query, setQuery] = useState({ query: '', language: 'All', sort: '' })
   const [results, setResults] = useState({
     loading: false,
     error: false,
     data: undefined,
   })
 
+  const search = (query) => {
+    if (query?.query?.length) {
+      setResults((prev) => ({ ...prev, loading: true }))
+
+      searchGithubRepos(query)
+        .then((response) => response.json())
+        .then((data) => setResults((prev) => ({ ...prev, data })))
+        .catch((error) => setResults((prev) => ({ ...prev, error })))
+        .finally(() => setResults((prev) => ({ ...prev, loading: false })))
+    }
+  }
+
+  useEffect(() => search(query), [query])
+
   return (
     <div className={classes.root}>
       <Typography variant="h5" align="center">
         Useless But Sick Repo Searcher
       </Typography>
-      <SearchInput setResults={setResults} />
+      <SearchInput useQuery={[query, setQuery]} />
       <SearchResults results={results} />
     </div>
   )

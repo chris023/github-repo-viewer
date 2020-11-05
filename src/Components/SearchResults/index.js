@@ -3,7 +3,9 @@ import React from 'react'
 import { List, Paper, Typography } from '@material-ui/core'
 
 import { GenericLoader } from '../../Components'
+
 import { Result } from './Result'
+import { SortBy } from './SortBy'
 import { useStyles } from './style'
 
 const Error = ({ error }) => <Typography>{error}</Typography>
@@ -30,6 +32,7 @@ const SearchResults = ({ results }) => {
             ? `Displaying ${data?.items?.length} of ${data?.total_count} Results`
             : `No Results`}
         </Typography>
+        <SortBy />
         {data?.items?.length ? (
           <Paper>
             <List alignItems="flex-start" dense className={classes.list}>
