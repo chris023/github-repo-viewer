@@ -9,6 +9,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   list: {
     width: '100%',
+    overflow: 'hidden',
   },
   title: {
     marginBottom: theme.spacing(2),
