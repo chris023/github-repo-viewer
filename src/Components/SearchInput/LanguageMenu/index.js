@@ -46,7 +46,6 @@ const LanguageMenu = ({ language, setLanguage }) => {
   const classes = useStyles()
 
   const select = (language) => () => {
-    console.log('here', language)
     setLanguage(language)
     setOpen(null)
   }
