@@ -10,7 +10,7 @@ import { useStyles } from './style'
 
 const Error = ({ error }) => <Typography>{error}</Typography>
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, useQuery }) => {
   const classes = useStyles()
 
   const { loading, error, data } = results
@@ -25,17 +25,23 @@ const SearchResults = ({ results }) => {
   if (error) return <Error error={error} />
 
   if (data) {
+    const totalResults = (() => {
+      if (Number(data?.total_count) > 1000)
+        return (data?.total_count / 1000).toFixed(0) + 'K'
+      return data?.total_count
+    })()
+
     return (
       <div className={classes.root}>
         <Typography className={classes.title} align="center">
           {data?.items?.length
-            ? `Displaying ${data?.items?.length} of ${data?.total_count} Results`
+            ? `Displaying ${data?.items?.length} of ${totalResults} Results`
             : `No Results`}
         </Typography>
-        <SortBy />
+        <SortBy useQuery={useQuery} />
         {data?.items?.length ? (
           <Paper>
-            <List alignItems="flex-start" dense className={classes.list}>
+            <List dense className={classes.list}>
               {data?.items?.map((item, i) => (
                 <Result item={item} key={`item-${i}`} />
               ))}
