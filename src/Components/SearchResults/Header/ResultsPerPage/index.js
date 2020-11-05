@@ -18,7 +18,7 @@ const ResultsPerPage = ({ useQuery }) => {
 
   return (
     <>
-      <List component={Paper} disablePadding>
+      <List component={Paper} disablePadding className={classes.root}>
         <ListItem button onClick={(e) => setOpen(e.currentTarget)}>
           Per Page: {query.pageSize} <ArrowDownIcon />
         </ListItem>
