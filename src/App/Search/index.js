@@ -11,6 +11,8 @@ const Search = () => {
   const [query, setQuery] = useState({
     query: '',
     language: 'All',
+    page: 1,
+    pageSize: 10,
     sort: sortMethods[0],
   })
   const [results, setResults] = useState({
