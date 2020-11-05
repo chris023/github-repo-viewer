@@ -19,8 +19,6 @@ const SearchResults = ({ results }) => {
 
   const { loading, error, data } = results
 
-  console.log(loading)
-
   if (loading)
     return (
       <Paper className={classes.root}>
