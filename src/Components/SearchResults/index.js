@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import StarIcon from '@material-ui/icons/StarRate'
+import he from 'he'
 
 import { GenericLoader } from '../../Components'
 import { useStyles } from './style'
@@ -65,9 +66,15 @@ const SearchResults = ({ results }) => {
                       </svg>
                     </ListItemIcon>
                     <ListItemText
+                      disableTypography
                       primary={
                         <div className={classes.listItemPrimary}>
-                          <Typography variant="h6">{item.full_name}</Typography>
+                          <Typography
+                            variant="h6"
+                            className={classes.listItemPrimaryText}
+                          >
+                            {he.decode(item.full_name.replace('/', '/&#8203;'))}
+                          </Typography>
                           <Typography
                             variant="body1"
                             className={classes.listItemPrimaryStarText}
