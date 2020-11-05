@@ -1,8 +1,12 @@
+import React from 'react'
+
+import ArrowIcon from '@material-ui/icons/ArrowRightAlt'
+
 const config = {
   baseurl: 'https://api.github.com/search/repositories',
 }
 
-const searchGithubRepos = (query, language) => {
+const searchGithubRepos = ({ query, language }) => {
   if (!query?.length) {
     throw new Error('Query string required')
   }
@@ -21,4 +25,27 @@ const searchGithubRepos = (query, language) => {
   })
 }
 
-export { searchGithubRepos }
+const sortMethods = [
+  {
+    display: <>Best Match</>,
+    value: '&sort=best-match',
+  },
+  {
+    display: (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        Stars <ArrowIcon style={{ transform: 'rotate(90deg)' }} />
+      </div>
+    ),
+    value: '&sort=stars&order=asc',
+  },
+  {
+    display: (
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        Stars <ArrowIcon style={{ transform: 'rotate(270deg)' }} />
+      </div>
+    ),
+    value: '&sort=stars&order=desc',
+  },
+]
+
+export { searchGithubRepos, sortMethods }
