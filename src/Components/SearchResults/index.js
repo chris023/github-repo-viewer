@@ -8,6 +8,7 @@ import {
   Paper,
   Typography,
 } from '@material-ui/core'
+import StarIcon from '@material-ui/icons/StarRate'
 
 import { GenericLoader } from '../../Components'
 import { useStyles } from './style'
@@ -65,12 +66,28 @@ const SearchResults = ({ results }) => {
                     </ListItemIcon>
                     <ListItemText
                       primary={
-                        <Typography variant="h6">{item.full_name}</Typography>
+                        <div className={classes.listItemPrimary}>
+                          <Typography variant="h6">{item.full_name}</Typography>
+                          <Typography
+                            variant="body1"
+                            className={classes.listItemPrimaryStarText}
+                          >
+                            {(() => {
+                              if (Number(item.stargazers_count) > 1000)
+                                return (
+                                  (item.stargazers_count / 1000).toFixed(1) +
+                                  'K'
+                                )
+                              return item.stargazers_count
+                            })()}
+                            <StarIcon className={classes.listItemPrimaryStar} />
+                          </Typography>
+                        </div>
                       }
                       secondary={
                         <>
                           <Typography variant="body1">
-                            {item.stargazers_count} Stars
+                            {item.language}
                           </Typography>
                         </>
                       }
