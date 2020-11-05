@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   input: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(2),
     flex: 1,
   },
   iconButton: {
