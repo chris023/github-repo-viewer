@@ -23,6 +23,10 @@ export const useStyles = makeStyles((theme) => ({
   listItemPrimaryStarText: {
     display: 'flex',
     alignItems: 'center',
+    marginLeft: theme.spacing(1),
+  },
+  listItemPrimaryText: {
+    wordWrap: 'break-word',
   },
   title: {
     marginBottom: theme.spacing(2),
