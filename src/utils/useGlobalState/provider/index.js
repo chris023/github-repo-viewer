@@ -6,8 +6,6 @@ import { state as defaultState } from '../state'
 const CustomHookProvider = ({ children }) => {
   const [state, setState] = useState(defaultState)
 
-  React.useEffect(() => console.log('State Changed: ', state), [state])
-
   const setResults = (callback) =>
     setState((prev) => ({ ...prev, results: callback(prev.results) }))
 
