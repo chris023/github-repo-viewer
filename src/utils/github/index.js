@@ -6,12 +6,12 @@ const config = {
   baseurl: 'https://api.github.com/search/repositories',
 }
 
-const searchGithubRepos = ({ query, language, page, pageSize, sort }) => {
-  if (!query?.length) {
+const searchGithubRepos = ({ search, language, page, pageSize, sort }) => {
+  if (!search?.length) {
     throw new Error('Query string required')
   }
 
-  let url = `${config.baseurl}?q=${query}`
+  let url = `${config.baseurl}?q=${search}`
 
   if (language?.length && language !== 'All') {
     url += '+language:' + language.toLowerCase()
