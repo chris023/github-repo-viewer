@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 import { Divider, InputBase, IconButton, Paper } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
+import { useGlobalState } from '../../utils'
 import { LanguageMenu } from './LanguageMenu'
 import { useStyles } from './style'
 
-const SearchInput = ({ useQuery }) => {
+const SearchInput = () => {
   const classes = useStyles()
   const [inputValue, setInputValue] = useState('')
-
-  const [, setQuery] = useQuery
+  const { setQuery } = useGlobalState()
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -20,7 +20,7 @@ const SearchInput = ({ useQuery }) => {
 
   return (
     <Paper component="form" className={classes.root} onSubmit={onSubmit}>
-      <LanguageMenu useQuery={useQuery} />
+      <LanguageMenu />
       <Divider orientation="vertical" style={{ height: 36 }} />
       <InputBase
         className={classes.input}

@@ -1,28 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { Typography } from '@material-ui/core'
 
 import { SearchInput, SearchResults } from '../../Components'
-import { searchGithubRepos, sortMethods } from '../../utils'
+import { searchGithubRepos, useGlobalState } from '../../utils'
 import { useStyles } from './style'
 
 const Search = () => {
   const classes = useStyles()
-  const [query, setQuery] = useState({
-    search: '',
-    language: 'All',
-    page: 1,
-    pageSize: 10,
-    sort: sortMethods[0],
-  })
-  const [results, setResults] = useState({
-    loading: false,
-    error: false,
-    data: undefined,
-  })
+  const { query, setResults } = useGlobalState()
 
   const search = (query) => {
-    if (query?.search?.length) {
+    if (query.search?.length) {
       setResults((prev) => ({ ...prev, loading: true }))
 
       searchGithubRepos(query)
@@ -40,8 +29,8 @@ const Search = () => {
       <Typography variant="h5" align="center">
         Useless But Sick Repo Searcher
       </Typography>
-      <SearchInput useQuery={[query, setQuery]} />
-      <SearchResults useQuery={[query, setQuery]} results={results} />
+      <SearchInput />
+      <SearchResults />
     </div>
   )
 }

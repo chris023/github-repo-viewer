@@ -4,11 +4,12 @@ import { Paper } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 
+import { useGlobalState } from '../../../utils'
 import { useStyles } from './style'
 
-const Footer = ({ useQuery }) => {
+const Footer = () => {
   const classes = useStyles()
-  const [query, setQuery] = useQuery
+  const { query, setQuery } = useGlobalState()
 
   const back = () => {
     if (query.page > 1) {

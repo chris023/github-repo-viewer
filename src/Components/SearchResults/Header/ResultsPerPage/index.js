@@ -4,14 +4,15 @@ import { List, ListItem, Menu, MenuItem, Paper } from '@material-ui/core'
 import ArrowDownIcon from '@material-ui/icons/ExpandMore'
 import clsx from 'clsx'
 
+import { useGlobalState } from '../../../../utils'
 import { useStyles } from './style'
 
 const sizes = [10, 15, 50, 100]
 
-const ResultsPerPage = ({ useQuery }) => {
+const ResultsPerPage = () => {
   const classes = useStyles()
   const [open, setOpen] = useState(null)
-  const [query, setQuery] = useQuery
+  const { query, setQuery } = useGlobalState()
 
   const select = (size) => () =>
     setQuery((prev) => ({ ...prev, pageSize: size }))

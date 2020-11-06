@@ -4,6 +4,7 @@ import { List, Paper, Typography } from '@material-ui/core'
 
 import { GenericLoader } from '../../Components'
 
+import { useGlobalState } from '../../utils'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { Result } from './Result'
@@ -11,8 +12,9 @@ import { useStyles } from './style'
 
 const Error = ({ error }) => <Typography>{error}</Typography>
 
-const SearchResults = ({ results, useQuery }) => {
+const SearchResults = () => {
   const classes = useStyles()
+  const { results } = useGlobalState()
 
   const { loading, error, data } = results
 
@@ -29,7 +31,7 @@ const SearchResults = ({ results, useQuery }) => {
     return (
       <>
         <div className={classes.root}>
-          <Header data={data} useQuery={useQuery} />
+          <Header data={data} />
 
           {data?.items?.length ? (
             <Paper>
@@ -41,7 +43,7 @@ const SearchResults = ({ results, useQuery }) => {
             </Paper>
           ) : null}
         </div>
-        <Footer useQuery={useQuery} />
+        <Footer />
       </>
     )
   }

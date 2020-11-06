@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import ArrowDownIcon from '@material-ui/icons/ExpandMore'
 
+import { useGlobalState } from '../../../utils'
 import { useStyles } from './style'
 
 const languages = [
@@ -41,10 +42,11 @@ const languages = [
   'Haskell',
 ]
 
-const LanguageMenu = ({ useQuery }) => {
+const LanguageMenu = () => {
   const [open, setOpen] = useState(null)
   const classes = useStyles()
-  const [query, setQuery] = useQuery
+  const hook = useGlobalState()
+  const { query, setQuery } = hook
 
   const select = (language) => () => {
     setQuery((prev) => ({ ...prev, language, page: 1 }))

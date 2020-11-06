@@ -6,13 +6,13 @@ import ArrowDownIcon from '@material-ui/icons/ExpandMore'
 
 import clsx from 'clsx'
 
-import { sortMethods } from '../../../../utils'
+import { sortMethods, useGlobalState } from '../../../../utils'
 import { useStyles } from './style'
 
-const SortBy = ({ useQuery }) => {
+const SortBy = () => {
   const classes = useStyles()
   const [open, setOpen] = useState(null)
-  const [query, setQuery] = useQuery
+  const { query, setQuery } = useGlobalState()
 
   const select = (method) => () => {
     setQuery((prev) => ({ ...prev, sort: method }))
