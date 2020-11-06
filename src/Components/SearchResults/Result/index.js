@@ -8,14 +8,23 @@ import {
 } from '@material-ui/core'
 import StarIcon from '@material-ui/icons/StarRate'
 import he from 'he'
+import { useHistory } from 'react-router'
 
 import { useStyles } from './style'
 
 const Result = ({ item }) => {
   const classes = useStyles()
+  const history = useHistory()
+
+  const redirectToItemDetails = () => history.push('/repository/' + item.id)
 
   return (
-    <ListItem className={classes.listItem} divider button>
+    <ListItem
+      className={classes.listItem}
+      divider
+      button
+      onClick={redirectToItemDetails}
+    >
       <ListItemIcon>
         <svg
           height="32"

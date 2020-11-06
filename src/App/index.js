@@ -15,7 +15,7 @@ const App = () => {
       <CustomHookProvider>
         <Switch>
           <Route exact path="/search" component={Search} />
-          <Route exact path="/repository" component={RepoDetails} />
+          <Route exact path="/repository/:id" component={RepoDetails} />
           <Redirect to="/search" />
         </Switch>
       </CustomHookProvider>
