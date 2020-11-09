@@ -26,11 +26,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -47,5 +42,42 @@
     "eslint-plugin-prettier": "^3.1.4",
     "gh-pages": "^3.1.0",
     "prettier": "^2.1.2"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:react/recommended",
+      "react-app"
+    ],
+    "globals": {
+      "process": true
+    },
+    "plugins": [
+      "prettier",
+      "react"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "lines-between-class-members": "error",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/order": "error",
+      "prettier/prettier": "error",
+      "react/prefer-stateless-function": "error",
+      "react/prop-types": 0
+    }
   }
 }
