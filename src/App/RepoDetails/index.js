@@ -41,7 +41,7 @@ const RepoDetails = () => {
                 component="a"
                 href={repo.html_url}
               >
-                {repo.name} / <b>{repo.owner.login}</b>
+                {repo.owner.login} / <b>{repo.name}</b>
               </Typography>
             </Grid>
             <Grid item sm={12} className={classes.gridItem}>
