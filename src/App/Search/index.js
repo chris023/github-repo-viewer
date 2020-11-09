@@ -22,6 +22,8 @@ const Search = () => {
     }
   }
 
+  // Intentionally omit search from dep array
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => search(query), [query])
 
   return (
