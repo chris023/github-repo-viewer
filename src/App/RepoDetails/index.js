@@ -14,6 +14,7 @@ const RepoDetails = () => {
   const history = useHistory()
   const { results } = useGlobalState()
 
+  // eslint-disable-next-line eqeqeq
   const repo = results?.data?.items?.find(({ id }) => id == params.id)
 
   if (repo) {
