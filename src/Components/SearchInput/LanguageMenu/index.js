@@ -59,6 +59,7 @@ const LanguageMenu = () => {
         disablePadding
         className={classes.list}
         onClick={(e) => setOpen(e.currentTarget)}
+        data-testid="cy-language-menu"
       >
         <ListItem button>
           <ListItemText>{query.language}</ListItemText>
@@ -71,7 +72,11 @@ const LanguageMenu = () => {
         {languages
           .sort((a, b) => b < a)
           .map((language, i) => (
-            <MenuItem key={`language-${i}`} onClick={select(language)}>
+            <MenuItem
+              key={`language-${i}`}
+              onClick={select(language)}
+              data-testid={`cy-language-menu-option-${language}`}
+            >
               {language}
             </MenuItem>
           ))}

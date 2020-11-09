@@ -23,7 +23,7 @@ const SearchInput = () => {
       component="form"
       className={classes.root}
       onSubmit={onSubmit}
-      data-testid="cy-search-input"
+      data-testid="cy-search-component"
     >
       <LanguageMenu />
       <Divider orientation="vertical" style={{ height: 36 }} />
@@ -32,8 +32,13 @@ const SearchInput = () => {
         placeholder="Search Github Repositories"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        data-testid="cy-search-input"
       />
-      <IconButton type="submit" className={classes.iconButton}>
+      <IconButton
+        type="submit"
+        className={classes.iconButton}
+        data-testid="cy-search-button"
+      >
         <SearchIcon />
       </IconButton>
     </Paper>

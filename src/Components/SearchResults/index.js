@@ -30,7 +30,7 @@ const SearchResults = () => {
   if (data) {
     return (
       <>
-        <div className={classes.root}>
+        <div className={classes.root} data-testid="cy-search-results">
           <Header data={data} />
 
           {data?.items?.length ? (
