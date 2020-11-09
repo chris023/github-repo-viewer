@@ -8,7 +8,7 @@ Code challenge - see instructions.md
 
 1.) Clone repo
 
-    git clone https://github.com/chris023/github-repo-viewer/
+    git clone https://github.com/chris023/github-repo-viewer.git
 
 2.) Install necessary dependencies
 
