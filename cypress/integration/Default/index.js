@@ -1,7 +1,7 @@
 const sizes = ['iphone-6', 'ipad-2', 'macbook-13', 'macbook-16']
 
 sizes.forEach((size) => {
-  describe(size, () => {
+  describe(`[${size}]`, () => {
     beforeEach(() => {
       cy.viewport(size)
     })
