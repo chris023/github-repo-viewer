@@ -19,7 +19,12 @@ const SearchInput = () => {
   }
 
   return (
-    <Paper component="form" className={classes.root} onSubmit={onSubmit}>
+    <Paper
+      component="form"
+      className={classes.root}
+      onSubmit={onSubmit}
+      data-testid="cy-search-input"
+    >
       <LanguageMenu />
       <Divider orientation="vertical" style={{ height: 36 }} />
       <InputBase
